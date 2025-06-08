@@ -1,24 +1,39 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
-<head> 
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>מחשבון גימלים Air4Med</title>
-	<link rel="icon" type="image/x-icon"
-          href="https://static.wixstatic.com/ficons/7cf410_4587f0819b4f4526b5a1aeb15d2df2bf~mv2.ico">
-    <!-- For Android -->
-    <link rel="icon" sizes="192x192" href="https://static.wixstatic.com/media/7cf410_e67dfdd37e0b41d2a5345326ee294cfe~mv2.jpg">
-    <!-- For iOS -->
-    <link rel="apple-touch-icon" href="https://static.wixstatic.com/media/7cf410_7e5a4067e9694ba988994dfd5f9c2717~mv2.jpg">
+    
+    <meta name="description" content="מחשבון חישוב ימי מחלה (גימלים) עבור חיילים - כולל מועד חזרה ליחידה. כלי מאושר לשימוש ע״י חיל הרפואה.">
+    
+    <meta property="og:title" content="מחשבון גימלים Air4Med" />
+    <meta property="og:description" content="חשב בקלות את מועד החזרה ליחידה בהתאם לימי המחלה שקיבלת." />
+    <meta property="og:image" content="https://static.wixstatic.com/media/b604db_5af7e40914b74e6083d47f22bea9b41d~mv2.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="he_IL" />
+    
+    <link rel="icon" type="image/x-icon" href="https://makatsearch.web.app/assets/LogoYL.ico">
+    
+    <!-- Android Icon -->
+    <link rel="icon" sizes="192x192" href="https://makatsearch.web.app/appspic/gimelim192.jpg">
+    
+    <!-- iOS Icon -->
+    <link rel="apple-touch-icon" href="https://makatsearch.web.app/appspic/gimelim180.jpg">
+    
+    <!-- Design -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.rtl.min.css"
-    integrity="sha384-+4j30LffJ4tgIMrq9CwHvn0NjEvmuDCOfk6Rpg2xg7zgOxWWtLtozDEEVvBPgHqE" crossorigin="anonymous">
+          integrity="sha384-+4j30LffJ4tgIMrq9CwHvn0NjEvmuDCOfk6Rpg2xg7zgOxWWtLtozDEEVvBPgHqE"
+          crossorigin="anonymous">
+    
+    <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="https://static.wixstatic.com/ficons/b604db_e84b7d88e6a4409d9875e798e0195ce6~mv2.ico">
+    
+    <!-- Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
-    <meta property='og:image'
-          content='https://static.wixstatic.com/media/b604db_5af7e40914b74e6083d47f22bea9b41d~mv2.jpg' />
+    <!-- Source: https://makatsearch.web.app/ -->
+</head>
 
     <style>
         * {
@@ -47,7 +62,6 @@
             flex-grow: 1;
             text-align: center;
         }
-        /* סגנון החץ */
         .back-arrow {
             width: 40px;
             height: 40px;
@@ -57,16 +71,14 @@
             color: white;
             text-decoration: none;
             font-size: 24px;
-            transform: rotate(180deg); /* הופך את החץ לכיוון שמאל */
+            transform: rotate(180deg);
         }
         .back-arrow:hover {
             color: #f0f0f0;
         }
-        /* שומר על המרחק מהקצוות */
         .menu-space {
             width: 40px;
         }
-        
         .footer {
             margin-top: 30px;
             padding: 20px 0;
@@ -90,8 +102,6 @@
             color: #9f1111;
             text-decoration: underline;
         }
-
-        /* תפריט המבורגר */
         .hamburger {
             cursor: pointer;
             z-index: 1000;
@@ -144,7 +154,6 @@
             display: none;
             z-index: 998;
         }
-        /* אנימציה להמבורגר */
         .hamburger.active div:nth-child(1) {
             transform: rotate(45deg) translate(6px, 6px);
         }
@@ -173,74 +182,69 @@
         <ul>
             <li><a href="https://air4med.wixsite.com/air4med">אתר הרפואה</a></li>
             <li><a href="https://makatsearch.web.app/appslinks.html">ענן האפליקציות</a></li>
-            <li><a href="https://pkudot.glide.page">פקודות והנחיות מקצועיות</a></li>
+            <li><a href="https://makatsearch.web.app/pkudot/">פקודות והנחיות מקצועיות</a></li>
             <li><a href="https://makatsearch.web.app/">חיפוש מקטים</a></li>
         </ul>
     </nav>
 	
-<div class="container my-4 mx-auto h-100">
-    <!-- טקסט ממורכז מעל השדות -->
-    <div class="text-center mb-4">
-        <p class="small-text">הזן את כמות וזמן קבלת הגימלים וקבל את מועד החזרה ליחידה:</p>
-    </div>
-
-    <!-- שאר הקוד נשאר זהה... -->
     <div class="container my-4 mx-auto h-100">
-        <div class="row g-2">
-            <div class="col-md">
-                <div class="form-floating" id="datetimepicker1">
-                    <input type="datetime-local" class="form-control" id="gimel-starttime">
-                    <label for="gimel-starttime">זמן קבלת הגימלים *</label>
+        <div class="text-center mb-4">
+            <p class="small-text">הזן את כמות וזמן קבלת הגימלים וקבל את מועד החזרה ליחידה:</p>
+        </div>
+
+        <div class="container my-4 mx-auto h-100">
+            <div class="row g-2">
+                <div class="col-md">
+                    <div class="form-floating" id="datetimepicker1">
+                        <input type="datetime-local" class="form-control" id="gimel-starttime">
+                        <label for="gimel-starttime">זמן קבלת הגימלים *</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating" id="datetimepicker2">
+                        <input type="number" class="form-control" id="gimel-days" min="1" value="1">
+                        <label for="gimel-days">כמה ימי מחלה התקבלו *</label>
+                    </div>
                 </div>
             </div>
-            <div class="col-md">
-                <div class="form-floating" id="datetimepicker2">
-                    <input type="number" class="form-control" id="gimel-days" min="1" value="1">
-                    <label for="gimel-days">כמה ימי מחלה התקבלו *</label>
+
+            <div class="d-flex h-100 my-4">
+                <div class="text-left ms-auto">
+                    <button type="button" class="btn btn-outline-primary" id="submit-btn">חשב</button>
                 </div>
             </div>
+
+            <div class="row g-1 my-4">
+                <div class="col-md">
+                    <p id="result" class="fw-bold lh-base"></p>
+                    <p class="text-secondary small center-text">
+                        <a href="https://12036faa-9c3b-4a30-9e3f-7621bf534b89.filesusr.com/ugd/7cf410_3e9b45aa989745a4b42fb27a7d60c90f.pdf" target="_blank" class="text-secondary text-decoration-none">
+                            פקודת מטכ"ל - טיפול רפואי בחייל
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+            <footer class="footer">
+                <ul>
+                    <li>
+                        <a href="https://air4med.wixsite.com/air4med/sickdays" target="_blank">מגבלות ימי מחלה</a>
+                    </li>
+                    <li>
+                        <a href="https://air4med.wixsite.com/air4med" target="_blank">© yahel laor</a>
+                    </li>
+                </ul>
+                <div class="text-center mt-3 text-secondary small">
+                    החישוב עדכני לתאריך: <span id="current-date"></span>
+                </div>
+            </footer>
         </div>
 
-        <div class="d-flex h-100 my-4">
-            <div class="text-left ms-auto">
-                <button type="button" class="btn btn-outline-primary" id="submit-btn">חשב</button>
-            </div>
-        </div>
-
-        <div class="row g-1 my-4">
-            <div class="col-md">
-                <p id="result" class="fw-bold lh-base"></p>
-                <p class="text-secondary small center-text">
-                    <a href="https://12036faa-9c3b-4a30-9e3f-7621bf534b89.filesusr.com/ugd/7cf410_3e9b45aa989745a4b42fb27a7d60c90f.pdf" target="_blank" class="text-secondary text-decoration-none">
-                        פקודת מטכ"ל - טיפול רפואי בחייל
-                    </a>
-                </p>
-            </div>
-        </div>
-
-        <footer class="footer">
-            <ul>
-                <li>
-                    <a href="https://air4med.wixsite.com/air4med/sickdays" target="_blank">מגבלות ימי מחלה</a>
-                </li>
-                <li>
-                    <a href="https://air4med.wixsite.com/air4med" target="_blank">© yahel laor</a>
-                </li>
-            </ul>
-            <div class="text-center mt-3 text-secondary small">
-                החישוב עדכני לתאריך: <span id="current-date"></span>
-            </div>
-        </footer>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
     <script src="https://unpkg.com/dayjs@1.8.21/locale/he.js"></script>
 
     <script>
-        // קוד המחשבון הקיים
         const starttimeElem = document.getElementById('gimel-starttime');
         const daysElem = document.getElementById('gimel-days');
         const submitButtonElem = document.getElementById('submit-btn');
@@ -267,7 +271,6 @@
 
         document.getElementById('current-date').textContent = dayjs().locale('he').format('dddd, D בMMMM, YYYY');
 
-        // קוד תפריט ההמבורגר
         const hamburger = document.querySelector('.hamburger');
         const menu = document.querySelector('.menu');
         const overlay = document.querySelector('.overlay');
@@ -284,79 +287,14 @@
             overlay.style.display = 'none';
         });
     </script>
-	
-	<!DOCTYPE html>
-<html lang="he" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>המחשבון אושר לשימוש</title>
-    <style>
-        /* עיצוב כללי */
-        body {
-            font-family: 'Rubik', sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        /* עיצוב התווית */
-        #approval-badge {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background: linear-gradient(135deg, #4CAF50, #66BB6A); /* גרדיינט ירוק */
-            color: white;
-            padding: 15px 25px;
-            border-radius: 40px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            font-size: 16px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 10px; /* רווח בין האייקון לטקסט */
-            cursor: pointer;
-            transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
-            z-index: 1000;
-            line-height: 1.5;
-            max-width: 320px;
-        }
-
-        #approval-badge:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
-        }
-
-        .hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        /* התאמה למכשירים קטנים */
-        @media screen and (max-width: 768px) {
-            #approval-badge {
-                font-size: 14px;
-                padding: 10px 20px;
-                max-width: 260px;
-            }
-        }
-
-        /* עיצוב האייקון */
-        #approval-badge i {
-            font-size: 20px;
-            color: white;
-        }
-    </style>
-</head>
-<body>
-    <!-- תווית צפה -->
-    <div id="approval-badge">
-        <i class="fas fa-check-circle"></i> <!-- אייקון של "אישור" -->
+    <div id="approval-badge" style="
+        position: fixed; bottom: 20px; left: 20px; background: linear-gradient(135deg, #4CAF50, #66BB6A); color: white; padding: 15px 25px;
+        border-radius: 40px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); font-size: 16px; font-weight: 500; display: flex; align-items: center;
+        gap: 10px; cursor: pointer; transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease; z-index: 1000; line-height: 1.5; max-width: 320px;">
+        <i class="fas fa-check-circle"></i>
         מאושר לשימוש ע"י חיל הרפואה <br> ע"פ פקודת הגימלים העדכנית
     </div>
-
-</body>
-</html>
-
+    <!-- Source: https://makatsearch.web.app/ -->
 </body>
 </html>
